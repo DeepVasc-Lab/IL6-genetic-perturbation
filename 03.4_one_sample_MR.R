@@ -30,12 +30,6 @@ ukb_outcomes <- read.xlsx(outcomes_file)
 # Load IL-6 genetic risk score
 il6_grs <- fread(grs_file, data.table = FALSE)
 
-# Map Munich study IDs to UK Biobank participant IDs
-analysis <- il6_grs %>%
-  rename(eid_munich = IID) %>%
-  inner_join(bridge_new, by = "eid_munich") %>%
-  rename(eid = eid_151281)
-
 # Standardize GRS
 analysis$il6_grs_std <- scale(analysis$SCORE1_SUM)
 il6_grs <- analysis[, c("eid", "il6_grs_std")]
