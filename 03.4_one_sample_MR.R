@@ -45,7 +45,7 @@ kinship_processed <- kinship %>%
   ) %>%
   select(eid, kinship_status, chip_batch)
 
-risk_factors_processed <- risk_factors_ukb151281 %>%
+risk_factors_processed <- risk_factors_ukb %>%
   mutate(
     logCRP = scale(log(CRP)),
     blage = Age,
